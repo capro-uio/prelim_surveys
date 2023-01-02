@@ -1,0 +1,387 @@
+{
+  "title": "Online behavioural data collection",
+  "language": "en",
+  "created": "2022-11-14",
+  "modified": "2023-01-02",
+  "opened": [],
+  "respondents": "ALL",
+  "contact": "athanasm@uio.no",
+  "codebook": true,
+  "personal_data": true,
+  "sensitive_data": false,
+  "editors": [
+    {
+      "username": "athanasm@uio.no",
+      "name": "Athanasia Monika Mowinckel"
+    },
+    {
+      "username": "athanasm@api",
+      "name": "access for athanasm"
+    },
+    {
+      "username": "thoschu@uio.no",
+      "name": "Thomas Wolfgang Schubert"
+    }
+  ],
+  "elements": {
+    "type": ["TEXT", "TEXT", "TEXT", "HEADING", "TEXT", "TEXT", "HEADING", "TEXT", "TEXT", "HEADING", "TEXT", "NAME", "EMAIL", "RADIO", "QUESTION", "QUESTION", "CHECKBOX", "QUESTION_MULTILINE", "CHECKBOX", "QUESTION", "CHECKBOX", "QUESTION", "RADIO", "NUMBER", "QUESTION"],
+    "order": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25],
+    "details": [
+      "Running online behavioural data collection that collects time series data is important in several social and medical science fields. Response and response times collected in relation to stimulus shown in a specified way is a crucial instrument to such fields.\n\n\n",
+      "Currently, such data is collected through external services that are run on either US or European servers, outside a Norwegian legal context. While many collect data on these anonymously, the providers claim these are truly anonymous, but the end-users (scientists) have no insight into whether these claims are true.\n\n\n",
+      "Furthermore, many also need to collect this sort of data in a non-anonymous form, to connect the data to previous or existing data from the same participant. No external service can provide this alternative in a secure way that is compliant with current data security legal framework.  \n\n\n",
+      "unknown element class",
+      "USIT is in a great position to be able to provide such a tool, either through integration with their existing Nettskjema survey tool or as another stand-alone service connected to other USIT services. In an ideal world, having an instance where a scientist can set up experiments (for simplicity for web-application, we will focus on javascript experiments) that could send data to EduCloud or TSD, would provide a valuable and secure way of collecting such data.\n\n\n",
+      "This type of service would provide a legal framework for not only green to red data, but even black data through TSD integration. \n\n\n",
+      "unknown element class",
+      "Attempts to talk to USIT about development of such a tool has not to date been fruitful, mainly because the use-case is not well-understood, but also because they do not know how many would be interested in this service.\n\n\n",
+      "Any researcher using tools like Qualtrics, Pavlovia, Gorilla etc, or who generally collect computerised timeseries data locally that could be interested in online collection,  are welcome to answer this survey. The intention is to get some traction with USIT by showing how many would acutally want to use or try using such a service.\n\n\n",
+      "unknown element class",
+      "We&#39;d like to know a little about you, so we can keep you updated about the process of this, and also provide USIT with some context. If you do not provide an email address, we will not be able to update you on the progress of this request to USIT.\n\n\n",
+      "unknown element class",
+      "unknown element class",
+      [
+        {
+          "question": "Place of employment",
+          "question_codebook": "work_place",
+          "question_mandatory": true,
+          "answer_order": "1",
+          "answer_option": "University of Oslo",
+          "answer_codebook": "UiO",
+          "answer_preselected": false,
+          "answer_correct": false
+        },
+        {
+          "question": "Place of employment",
+          "question_codebook": "work_place",
+          "question_mandatory": true,
+          "answer_order": "2",
+          "answer_option": "Oslo Metropolitan University",
+          "answer_codebook": "OsloMet",
+          "answer_preselected": false,
+          "answer_correct": false
+        },
+        {
+          "question": "Place of employment",
+          "question_codebook": "work_place",
+          "question_mandatory": true,
+          "answer_order": "3",
+          "answer_option": "BI Norwegian Business School",
+          "answer_codebook": "BI",
+          "answer_preselected": false,
+          "answer_correct": false
+        },
+        {
+          "question": "Place of employment",
+          "question_codebook": "work_place",
+          "question_mandatory": true,
+          "answer_order": "4",
+          "answer_option": "Norwegian Institute of Public Health",
+          "answer_codebook": "FHI",
+          "answer_preselected": false,
+          "answer_correct": false
+        },
+        {
+          "question": "Place of employment",
+          "question_codebook": "work_place",
+          "question_mandatory": true,
+          "answer_order": "5",
+          "answer_option": "Oslo University Hospital",
+          "answer_codebook": "OUS",
+          "answer_preselected": false,
+          "answer_correct": false
+        },
+        {
+          "question": "Place of employment",
+          "question_codebook": "work_place",
+          "question_mandatory": true,
+          "answer_order": "6",
+          "answer_option": "University of Bergen",
+          "answer_codebook": "UiB",
+          "answer_preselected": false,
+          "answer_correct": false
+        },
+        {
+          "question": "Place of employment",
+          "question_codebook": "work_place",
+          "question_mandatory": true,
+          "answer_order": "7",
+          "answer_option": "UiT the Arctic University of Norway",
+          "answer_codebook": "UiT",
+          "answer_preselected": false,
+          "answer_correct": false
+        },
+        {
+          "question": "Place of employment",
+          "question_codebook": "work_place",
+          "question_mandatory": true,
+          "answer_order": "8",
+          "answer_option": "Norwegian University of Science and Technology",
+          "answer_codebook": "NTNU",
+          "answer_preselected": false,
+          "answer_correct": false
+        },
+        {
+          "question": "Place of employment",
+          "question_codebook": "work_place",
+          "question_mandatory": true,
+          "answer_order": "9",
+          "answer_option": "University of Stavanger",
+          "answer_codebook": "UiS",
+          "answer_preselected": false,
+          "answer_correct": false
+        },
+        {
+          "question": "Place of employment",
+          "question_codebook": "work_place",
+          "question_mandatory": true,
+          "answer_order": "10",
+          "answer_option": "University of Agder",
+          "answer_codebook": "UiA",
+          "answer_preselected": false,
+          "answer_correct": false
+        },
+        {
+          "question": "Place of employment",
+          "question_codebook": "work_place",
+          "question_mandatory": true,
+          "answer_order": "11",
+          "answer_option": "Inland Norway University of Applied Sciences",
+          "answer_codebook": "HiNN",
+          "answer_preselected": false,
+          "answer_correct": false
+        },
+        {
+          "question": "Place of employment",
+          "question_codebook": "work_place",
+          "question_mandatory": true,
+          "answer_order": "12",
+          "answer_option": "Kristiania University College",
+          "answer_codebook": "Kristiania",
+          "answer_preselected": false,
+          "answer_correct": false
+        },
+        {
+          "question": "Place of employment",
+          "question_codebook": "work_place",
+          "question_mandatory": true,
+          "answer_order": "13",
+          "answer_option": "Other",
+          "answer_codebook": "other",
+          "answer_preselected": false,
+          "answer_correct": false
+        }
+      ],
+      [
+        {
+          "question": "What is your place of employment?",
+          "question_codebook": "work_place_other",
+          "question_mandatory": true
+        }
+      ],
+      [
+        {
+          "question": "What is the name of your center/institute/department?",
+          "question_codebook": "work_institute",
+          "question_mandatory": false
+        }
+      ],
+      [
+        {
+          "question": "General research field",
+          "question_mandatory": true,
+          "answer_order": "1",
+          "answer_option": "Social sciences",
+          "answer_codebook": "social",
+          "answer_preselected": false,
+          "answer_correct": false
+        },
+        {
+          "question": "General research field",
+          "question_mandatory": true,
+          "answer_order": "2",
+          "answer_option": "Humanities",
+          "answer_codebook": "humanities",
+          "answer_preselected": false,
+          "answer_correct": false
+        },
+        {
+          "question": "General research field",
+          "question_mandatory": true,
+          "answer_order": "3",
+          "answer_option": "Medical sciences",
+          "answer_codebook": "medical",
+          "answer_preselected": false,
+          "answer_correct": false
+        },
+        {
+          "question": "General research field",
+          "question_mandatory": true,
+          "answer_order": "4",
+          "answer_option": "Natural sciences",
+          "answer_codebook": "natural",
+          "answer_preselected": false,
+          "answer_correct": false
+        },
+        {
+          "question": "General research field",
+          "question_mandatory": true,
+          "answer_order": "5",
+          "answer_option": "Other",
+          "answer_codebook": "other",
+          "answer_preselected": false,
+          "answer_correct": false
+        }
+      ],
+      "unknown element class",
+      [
+        {
+          "question": "What tools do you already use for such types of data collection?",
+          "question_mandatory": true,
+          "answer_order": "1",
+          "answer_option": "Qualtrics",
+          "answer_codebook": "qualtrics",
+          "answer_preselected": false,
+          "answer_correct": false
+        },
+        {
+          "question": "What tools do you already use for such types of data collection?",
+          "question_mandatory": true,
+          "answer_order": "2",
+          "answer_option": "Pavlovia",
+          "answer_codebook": "pavlovia",
+          "answer_preselected": false,
+          "answer_correct": false
+        },
+        {
+          "question": "What tools do you already use for such types of data collection?",
+          "question_mandatory": true,
+          "answer_order": "3",
+          "answer_option": "Gorilla",
+          "answer_codebook": "gorilla",
+          "answer_preselected": false,
+          "answer_correct": false
+        },
+        {
+          "question": "What tools do you already use for such types of data collection?",
+          "question_mandatory": true,
+          "answer_order": "4",
+          "answer_option": "Local data collection only (i.e. not online)",
+          "answer_codebook": "local",
+          "answer_preselected": false,
+          "answer_correct": false
+        },
+        {
+          "question": "What tools do you already use for such types of data collection?",
+          "question_mandatory": true,
+          "answer_order": "5",
+          "answer_option": "Other",
+          "answer_codebook": "other",
+          "answer_preselected": false,
+          "answer_correct": false
+        }
+      ],
+      [
+        {
+          "question": "What other service do you use?",
+          "question_codebook": "tools_other",
+          "question_mandatory": true
+        }
+      ],
+      [
+        {
+          "question": "What types of languages do you use to create your experiments?",
+          "question_mandatory": true,
+          "answer_order": "1",
+          "answer_option": "MatLab",
+          "answer_codebook": "matlab",
+          "answer_preselected": false,
+          "answer_correct": false
+        },
+        {
+          "question": "What types of languages do you use to create your experiments?",
+          "question_mandatory": true,
+          "answer_order": "2",
+          "answer_option": "E-prime",
+          "answer_codebook": "eprime",
+          "answer_preselected": false,
+          "answer_correct": false
+        },
+        {
+          "question": "What types of languages do you use to create your experiments?",
+          "question_mandatory": true,
+          "answer_order": "3",
+          "answer_option": "NeuroPsych",
+          "answer_codebook": "neuropsych",
+          "answer_preselected": false,
+          "answer_correct": false
+        },
+        {
+          "question": "What types of languages do you use to create your experiments?",
+          "question_mandatory": true,
+          "answer_order": "4",
+          "answer_option": "javascript",
+          "answer_codebook": "js",
+          "answer_preselected": false,
+          "answer_correct": false
+        },
+        {
+          "question": "What types of languages do you use to create your experiments?",
+          "question_mandatory": true,
+          "answer_order": "5",
+          "answer_option": "python",
+          "answer_codebook": "python",
+          "answer_preselected": false,
+          "answer_correct": false
+        },
+        {
+          "question": "What types of languages do you use to create your experiments?",
+          "question_mandatory": true,
+          "answer_order": "6",
+          "answer_option": "Other",
+          "answer_codebook": "other",
+          "answer_preselected": false,
+          "answer_correct": false
+        }
+      ],
+      [
+        {
+          "question": "What other language do you use?",
+          "question_codebook": "plang_other",
+          "question_mandatory": true
+        }
+      ],
+      [
+        {
+          "question": "Would you be interested in a platform run by USIT where you could collect this type of data and have it sent to Nettskjema?",
+          "question_codebook": "interest",
+          "question_mandatory": true,
+          "answer_order": "1",
+          "answer_option": "Yes",
+          "answer_codebook": "1",
+          "answer_preselected": false,
+          "answer_correct": false
+        },
+        {
+          "question": "Would you be interested in a platform run by USIT where you could collect this type of data and have it sent to Nettskjema?",
+          "question_codebook": "interest",
+          "question_mandatory": true,
+          "answer_order": "2",
+          "answer_option": "No",
+          "answer_codebook": "0",
+          "answer_preselected": false,
+          "answer_correct": false
+        }
+      ],
+      "unknown element class",
+      [
+        {
+          "question": "In an ideal world, are there other services you would want to connect to this?",
+          "question_codebook": "connection",
+          "question_mandatory": false
+        }
+      ]
+    ]
+  },
+  "form_id": 298521
+}

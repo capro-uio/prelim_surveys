@@ -1,0 +1,52 @@
+form_id	submission_id	connection	estimate	field	field_other	interest	plang	plang_other	tools	tools_other	work_institute	work_place	work_place_other
+298521	24515431	NA	100	social	NA	1	eprime	NA	local	NA	NA	other	Østfold University College
+298521	24451581	NA	100	humanities;social	NA	1	other	not yet but I would probably use matlab or python	local;qualtrics	NA	RITMO	UiO	NA
+298521	24442590	Send data to lagringshotell maybe. General comment: I support this service. Please provide a simple way for us to upload our front-end web app with arbritrary JS code capabilities, and option to remove all nettskjema/uio logos etc from the front-end during test-runtime.	1000	social	NA	1	js	NA	other	In-house custom web app/server	ISP/UV	UiO	NA
+298521	24423684	maybe a nettskjema-qualtrics connector? Connect to the Sona system currently in use for the subject pool in social psychology?	1000	social	NA	1	js	NA	qualtrics	NA	PSI	UiO	NA
+298521	24402586	audio recordings	140	humanities	NA	1	python	NA	gorilla;pavlovia	NA	MultiLing	UiO	NA
+298521	24401864	Audio recordings	150	humanities	NA	1	python	NA	gorilla;pavlovia	NA	MultiLing, ILN	UiO	NA
+298521	24375773	An API for both anonymization features and secure storage of data would be nice. Also, if UiO can provide a framework for anonymization it might open a lot of possibilities for using external platforms, even those where we don't have control over the code.	300	humanities;social	NA	1	js	NA	other	Testable.org, self-hosted html/javascript (using the jsPsych library)	Special Needs Education	UiO	NA
+298521	24360088	NA	50	humanities	NA	1	other;python	R	local	NA	IFIKK	UiO	NA
+298521	24358531	Prolific	750	humanities;medical;natural;social	NA	1	matlab;python	NA	other	Prolific	RITMO Center for Interdisciplinary Studies in Rhythm, Time, and Motion	UiO	NA
+298521	24331853	NA	200	social	NA	1	js	NA	qualtrics	NA	Department of Psychology	UiO	NA
+298521	24317519	NA	3000	social	NA	1	js;python	NA	other;qualtrics	Monkey Survey	Institute of Psychology	NTNU	NA
+298521	24316238	Ethica (experience sampling data on app)	300	social	NA	1	other	Qualtrics	qualtrics	NA	Psychology	NTNU	NA
+298521	24315558	prolific	120	social	NA	1	eprime	NA	local	NA	ILN	UiO	NA
+298521	24314640	NA	600	social	NA	1	other	Do not know	qualtrics	NA	Department of Psychology	UiO	NA
+298521	24307349	NA	200	natural	NA	0	other;python	Inquisit	local;qualtrics	NA	NA	NTNU	NA
+298521	24306743	Sorry, the answering field above wouldn't accept my answer: I don't know what time series data set is? I have about 3-6 data collections a year with approx 400 participants per data collection. Regarding the present question: My needs are quite basic and what I need is the possibility to set up experimental designs like I do in Qualtrics. I am happy to show you what I mean, as I am sure there are many people with similar needs. I also need a new program to NOT require me to learn a programming language :-)	1	social	NA	1	other	English or Norwegian ;-) (Qualtrics questionnaires can be made without any programming language)	qualtrics	NA	Department of psychology, MAKS, Epistemic feelings lab	UiO	NA
+298521	24304826	NA	150	humanities;social	NA	1	matlab	NA	local	NA	MultiLing/ILN/HF	UiO	NA
+298521	24304414	NA	500	social	NA	1	eprime;matlab;python	NA	local;other	Nettskjema solution	Center for Lifespan Changes in Brain and Cognition, Department of Psychology	UiO	NA
+298521	24304300	OpenPose, DeepLabCut, MediaPipe, and other motion tracking video-analysis platforms. (Note: Time series data are not my main focus. I use web-based experiments for acceptability rating studies, forced-choice experiments, etc. (I'm in Linguistics.) I think 3-4 experiments per year are a good goal.)	400	humanities	NA	1	other	I myself have not been doing the coding.	gorilla;other	Prolific, PCIbex, Nettskjema	ILN (Institutt for lingvistiske og nordiske studier)	UiO	NA
+298521	24302765	NA	500	medical	NA	1	neuropsych;python	NA	gorilla;local	NA	Psychological Institute	UiO	NA
+298521	24302527	NA	1000	humanities;social	NA	0	neuropsych;python	NA	pavlovia	NA	MultiLing and ILN	UiO	NA
+298521	24300955	Jatos (?)	250	social	NA	1	js;other	jsPsych	other	self-hosted	IPS	UiT	NA
+298521	24300799	NA	50	humanities;social	NA	1	python	NA	local	NA	Department for linguistic and Scandinavian studies	UiO	NA
+298521	24300775	last question is very ambigious, I anticipate to run 5-10 experiments with 100-200 participants	1000	humanities	NA	1	eprime;js;python	NA	local;other;qualtrics	PcIbex	Institutt for lingvistiske og nordiske studier	UiO	NA
+298521	24300698	Prolific. I have to pay in advance and then get refunds. The amount is up to 120'000 kr. and I think this is something that should be centralized so that it does not depend on your bank account whether you can run a study.	15	social	NA	1	eprime	NA	qualtrics	NA	Psychology	UiO	NA
+298521	24300592	NA	200	medical;social	NA	1	js;other;python	R	local;other	MotionWare(actigaphy), App-monitoring(MinDag)	NORMENT, Inst. KlinMed	UiO	NA
+298521	24300521	NA	200	medical;natural;social	NA	1	eprime;js;matlab;python	NA	local;pavlovia;qualtrics	NA	Avdeling for fysikk og bildeanalyse	OUS	NA
+298521	24300294	prolific	2000	social	NA	1	eprime;js	NA	gorilla;local;qualtrics	NA	PSI	UiO	NA
+298521	24300194	Prolific	500	humanities;social	NA	1	eprime;matlab;python	NA	gorilla;pavlovia	NA	MultiLing	UiO	NA
+298521	24298090	NA	200	humanities	NA	1	eprime;python	NA	pavlovia	NA	MultiLing, ILN	UiO	NA
+298521	24295708	NA	200	humanities;social	NA	1	eprime;js;matlab;python	NA	gorilla;local;pavlovia	NA	MultiLing/ILN	UiO	NA
+298521	24295347	www.microdata.no	3	social	NA	1	python	NA	qualtrics	NA	NIFU	other	NIFU
+298521	24295193	NA	100	humanities;natural	NA	1	js;matlab;python	NA	local	NA	Department of Education and Sports Science	UiS	NA
+298521	24266656	TSD, EduCloud,	2000	medical;social	NA	1	eprime;js;matlab	NA	local	NA	LCBC	UiO	NA
+298521	24265416	Pavlovia, nettskjema diktafon and/or image/video integration.	250	humanities;social	NA	1	python	NA	gorilla;pavlovia	NA	Department of Vocational Teacher Education (faculty of teacher education and international studies)	OsloMet	NA
+298521	24265206	SSB or Kontakt- og reservasjonsregisteret	5	social	NA	1	other	R	other	SurveyXact	Grunnopplæring	other	NIFU Nordisk institutt for studier av innovasjon, forskning og utdanning
+298521	24265170	NA	1000	social	NA	0	other	GUI	other	e-babylab	Psychology	UiO	NA
+298521	24265034	I don't believe USIT has the resources to create something like Qualtrics. It would cost a lot. Thus, I would wish a solution to use Qualtrics for this type of data.	3	social	NA	0	js	NA	qualtrics	NA	Psychology	UiO	NA
+298521	24264187	NA	1000	social	NA	1	other	Inquisit, MaxMSP	qualtrics	NA	RITMO	UiO	NA
+298521	24264149	It would be amazing to be able to assign participants in other lab based studies  to run surveys in qualtrics  through netskjema - or alternatively ensure that Nettskjema has the nested randomization options of Qualtrics so that one may actually use it for rigorous scientific research	1000	humanities;natural;other;social	My 2022 NFR grant is funded through/as the life sciences	1	eprime	NA	local;other;qualtrics	Zoom	Psykologi	UiO	NA
+298521	24263845	Not sure I understand the question above. Difficult to know, depend on funding cooperation etc. 100-5000 end users a year, each providing between 1 and 50 datapoints. (I research on digital treatment and prevention interventions that does not just collect data but provide content that adapts to user-input etc.) Wuld like to connect to different forms of ""pasientjournal"" i helsevesenet eller hos frisklivssentraler (f.eks. sende en autogenerert epikrise)	3	medical;social	NA	1	python	NA	other	SERAFIN (open source development since 2013 - Github)	Dep. of psychology	UiO	NA
+298521	24262997	NA	100	social	NA	1	eprime;js	NA	gorilla;local;pavlovia	NA	Department of Psychology	UiO	NA
+298521	24262992	NA	2000	social	NA	1	js	NA	qualtrics	NA	PSI	UiO	NA
+298521	24262536	I rarely collect time series data. My use case is around 15-20 experiments with 300-1200 participants each. It would be great if the service allowed to use different (java script-based) experimental software (e.g., jspsych, labjs, psychojs) so that the researcher can choose the software that best suits their research. Thank you for this initiative! Forgot to mention: In need to connect this service to Prolific Academic.	20	social	NA	1	js	NA	qualtrics	NA	Department of psychology	UiO	NA
+298521	24262343	I rarely collect time series data. My use case is around 15-20 experiments with 300-1200 participants each. It would be great if the service allowed to use different (java script-based) experimental software (e.g., jspsych, labjs, psychojs) so that the researcher can choose the software that best suits their research. Thank you for this initiative!	20	social	NA	1	js	NA	qualtrics	NA	Department of psychology	UiO	NA
+298521	24261957	NA	200	medical;social	NA	1	js;python	NA	gorilla;local	NA	Psychology	UiO	NA
+298521	24261744	NA	300	social	NA	1	eprime	NA	gorilla	NA	Department of Psychology	UiO	NA
+298521	24261499	For educational research: students' grades.	150	humanities;medical;social	NA	1	other	So far no need for scripting..	other	Nettskjema!	PSI	UiO	NA
+298521	24261372	NA	1500	social	NA	1	eprime;python	NA	local;pavlovia;qualtrics	NA	Department of Psychology	UiO	NA
+298521	24261186	NA	40	social	NA	1	other	.	qualtrics	NA	Promenta	UiO	NA
+298521	24261132	connected surveys to nettskjema	100	social	NA	1	js;python	NA	other	viedoc checkware	NA	UiO	NA
