@@ -2,6 +2,7 @@
 title: "Proposal for platform to run javascipts experiments"
 subtitle: "run by the University of Oslo IT services"
 author: "Dr. Athanasia M. Mowinckel"
+affiliation: "Center for Lifespan Changes in Brain and Cognition, PSI, SV, UiO"
 editor: visual
 execute:
   message: false
@@ -9,6 +10,8 @@ execute:
   echo: true
 format:
   html:
+    toc: true
+    toc-location: left
     code-fold: true
     code-summary: "Show the code"
     embed-resources: true
@@ -145,7 +148,7 @@ All researchers at any Norwegian Institution were welcome to answer the question
 
 `r meta$elements$details[[1]]` `r meta$elements$details[[2]]` `r meta$elements$details[[3]]` `r meta$elements$details[[5]]` `r meta$elements$details[[6]]`
 
-## Results
+## Survey results
 
 Of the `r nrow(dt)` responses to the survey, the majority of responders (`r percent(last(work$pc))`) were from `r last(work$work_place)`, and are mainly within the `r last(field$field)` sciences (`r percent(last(field$pc))`). 
 A total of `r inst$n` (`r percent(inst$pc)`) responses are from Psychology (PSI, Norment, LCBC, Ritmo, Promenta, other Psychology Institutes). 
@@ -241,7 +244,7 @@ It should also be noted that a couple of responses did indicate they did not use
 The initial proposed service here does not include the build of a GUI for users to create their experiments, but rather a way to deploy already created experiments. 
 Creating such an addition might be something to consider in the long-term, after assessing initial success of the service.
 
-## Connected services
+### Connected services
 
 The last survey question probed what services respondents would like this suggested new service to connect to.
 Depending on the scope of one's research, various tools could be of particular interest to connect to to create data flow to be easier.
@@ -252,7 +255,7 @@ Aside from Prolific, several more respondents mention the ability to pay their r
 
 Additionally, several mention wanting to connect data to registry data (SSB, student grading, pasientjournal, etc,), and as such some possibility to connect data to other existing data seems to be valuable. This service might likely be highly valuable with possibility to use MinID login to verify participant identity for certain types of projects.
 
-## Scalability & Stability
+### Scalability & Stability
 
 Given that quite a large number of the respondents seems to have proficiency in creating their experiments in javascript, one could argue they could set up their own NREC server and launch their experiments from there. 
 However, setting up NREC servers to such a task is not trivial and requires technical expertise that we cannot expect all researchers to have (or have the time and interest to obtain among all their other activities). 
