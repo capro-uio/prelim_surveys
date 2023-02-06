@@ -10,6 +10,7 @@ execute:
   echo: true
 format:
   html:
+    theme: capro-quarto.scss
     toc: true
     toc-location: left
     code-fold: true

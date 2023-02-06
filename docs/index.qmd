@@ -1,21 +1,28 @@
 ---
 title: "Survey reports for CAPRO core facility application"
-format: html
+format: 
+  html:
+    theme: capro-quarto.scss
 editor: visual
 ---
 
 <ul>
+
 ```{r}
 #| echo: false
 #| results: asis
 list.files(here::here("docs"), "html", full.names = TRUE) |> 
   sapply(function(x){
+    if(grepl("index", x)) return("")
     title <- readLines(x, 30)
     title <- title[grepl("^<title", title)]
     title <- nettskjemar:::strip_html(title)
     sprintf('<li><a href="%s">%s</a></li>',
             basename(x), title)
   }, USE.NAMES = FALSE) |> 
-  cat(sep="\n")
+  cat(sep = "\n")
 ```
+
 </ul>
+
+[![](logo.svg){width="300"}](www.capro.dev)

@@ -2,7 +2,18 @@ library(patchwork)
 library(tidyverse)
 library(ggwordcloud)
 
-theme_set(theme_minimal())
+theme_capro <- function(){
+  theme_minimal() +
+  theme(
+    panel.background = element_rect(fill = "#2A2F36"),
+    plot.background = element_rect(fill = "#2A2F36"), 
+    text = element_text(colour = "#c0c2c4"),
+    axis.text = element_text(colour = "#c0c2c4"),
+    panel.grid = element_line(colour = "#20242b")
+  )
+}
+
+theme_set(theme_capro())
 PAL <- see::palette_okabeito()(3)
 
 get_data <- function(form, online = FALSE) {

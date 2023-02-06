@@ -1,0 +1,237 @@
+---
+title: "Proposal for platform to run javascipts experiments"
+subtitle: "run by the University of Oslo IT services"
+author: "Dr. Athanasia M. Mowinckel"
+affiliation: "Center for Lifespan Changes in Brain and Cognition, PSI, SV, UiO"
+editor: visual
+execute:
+  message: false
+  warning: false
+  echo: true
+format:
+  html:
+    theme: capro-quarto.scss
+    toc: true
+    toc-location: left
+    code-fold: true
+    code-summary: "Show the code"
+    embed-resources: true
+reference-location: margin
+citation-location: margin
+params:
+  run_nettskjema: false
+---
+
+```{r 'data'}
+#| include: false
+source(here::here("R", "utils.R"))
+ret <- get_data(298521, online = params$run_nettskjema)
+dt <- ret$dt
+meta <- ret$meta
+```
+
+```{r 'summaries'}
+#| include: false
+
+work <- dt |> 
+  group_by(work_place) |> 
+  tally() |> 
+  mutate(pc = n/sum(n)) |> 
+  arrange(pc)
+
+field <- dt |> 
+  separate_rows(field) |> 
+  group_by(field) |> 
+  tally() |> 
+  mutate(pc = n/sum(n)) |> 
+  arrange(pc)
+
+inst <- dt |> 
+  filter(grepl("psych|lcbc|psi|norment|promenta|ritmo", work_institute, ignore.case = TRUE)) |> 
+  tally() |> 
+  mutate(pc = n/nrow(dt)) |> 
+  arrange(pc)
+
+```
+
+## Summary
+
+```{r}
+#| column: margin
+#| fig-cap: "Freetext affiliations of responders"
+dt |> 
+  transmute(dept = work_institute) |> 
+  separate_rows(dept, sep = ",|/|and") |> 
+  mutate(
+    dept = gsub("psychology", "Psychology", dept),
+    dept = str_trim(dept),
+    dept = gsub("\\([^()]*\\)", "", dept)
+  ) |> 
+  group_by(dept) |> 
+  tally() |> 
+  ggplot(aes(label = dept, size = n, color = n)) +
+  geom_text_wordcloud(show.legend = FALSE) +
+  scale_colour_gradientn(colours = PAL) +
+  scale_size_area(max_size = 10)
+```
+
+On `r dateform(meta$created)` the survey "*`r meta$title`*" was launched to investigate the interest in an online tools that would help researchers in Norway run experimental behavioural data collection online in a Norwegian legal framework.
+As of `r dateform(as.Date("2022-12-28"))` the survey has collected `r nrow(dt)` responses from `r nrow(work)` institutions.
+Collectively, the respondents (conservatively) estimate receiving *`r scales::label_comma(big.mark = " ")(sum(dt$estimate))`* responses using such tools each year.
+All researchers at any Norwegian Institution were welcome to answer the questionnaire, as long as they collected (or were interested in collecting) data using [Qualtrics](https://www.qualtrics.com/), [Pavlovia](https://pavlovia.org), [Gorilla](https://gorilla.sc) etc, or who generally collect computerised timeseries data locally.
+
+## Background
+
+`r meta$elements$details[[1]]` `r meta$elements$details[[2]]` `r meta$elements$details[[3]]` `r meta$elements$details[[5]]` `r meta$elements$details[[6]]`
+
+## Survey results
+
+Of the `r nrow(dt)` responses to the survey, the majority of responders (`r percent(last(work$pc))`) were from `r last(work$work_place)`, and are mainly within the `r last(field$field)` sciences (`r percent(last(field$pc))`).
+A total of `r inst$n` (`r percent(inst$pc)`) responses are from Psychology (PSI, Norment, LCBC, Ritmo, Promenta, other Psychology Institutes).
+Full presentation of main work place and field of study can be found in @fig-work.
+The survey relied on snow-ball sampling to reach researchers that would be interested in the tool suggested, and as such has likely not reached all potential interested.
+
+```{r}
+#| label: fig-work
+#| fig-cap: "Summary of respondents places of work, and their general field of research"
+#| fig-cap-location: margin
+#| out-width: 100%
+#| out-height: 3inch
+#| fig-height: 2.5 
+
+ggbar(dt, work_place) + 
+  plot_spacer() +
+  ggbar(dt, field) +
+  plot_layout(widths = c(1, .3, 1))
+
+```
+
+### Expected yearly responses
+
+Responders estimate receiving *`r thousand(sum(dt$estimate))`* responses using such tools each year.
+However, the question for this estimate was by several responders pointed out to be somewhat ambiguous[^1].
+As such, several have responded with significantly higher numbers of responses in the free-text answers (some with a scale up 20 fold of their numerical answer).
+
+[^1]: **Could you provide an estimate on how much data you would expect to get over the course of a year?** Think of an entire time series data set as a single data point, so if you expected 100 time-series datasets for a year, you would respond 100 here.
+
+```{r}
+#| label: fig-yearly
+#| fig-cap: "The number of yearly expected responses from each institution."
+#| column: margin
+#| fig-height: 6
+#| fig-width: 3
+dt |> 
+  mutate(work_place = fct_infreq(work_place)) |> 
+  ggplot(aes(1, estimate, fill = work_place, colour = work_place)) + 
+  geom_bar(stat =  "identity") +
+  see::scale_fill_oi(aesthetics = c("fill", "colour")) +
+  labs( y = "Estmiated number of yearly responses") +
+  scale_y_continuous(labels = thousand) +
+  theme(axis.text.x = element_blank(),
+        axis.title.x = element_blank())
+
+```
+
+While the initial idea was to create a tool for time-series behavioural experiments, the tool could also be used to run more specialised surveys that are not possible to run in the current Nettskjema framework.
+This could be including features like more advanced conditional logic (forwarding from one question to another), randomisation of question order (often necessary with certain standardised questionnaires for validity), ability to capture time spent on *individual* questions etc.
+In a sense, this tool could alleviate some specific requests that are hard to solve within the Nettskjema framework.
+An application as suggested here could provide an alternative survey tool for those who are comfortable coding their own solutions, for instance javascript (which would be the easiest for web-implementation).
+
+As the survey was sent out with the expressed intent to reach those interested in time-series data, it would not necessarily reach those interested using this tool to send out highly customised surveys.
+The possible number of interested parties of such a service could therefore be much larger than here reached.
+
+### Programming language
+
+There are quite some of the survey respondents that already use javascript for their experiments (`r dt |> separate_rows(plang) |> group_by(plang) |> tally() |> mutate(pc = n/nrow(dt)) |> filter(plang == "js") |> pull(pc) |> percent()`, see @fig-lang for summary of languages used to create experiments).
+This is unsurprising, given the high amount of responders that use existing online tools which require javascript experiments (`r dt |> separate_rows(tools) |> group_by(tools) |> tally() |> mutate(pc = n/nrow(dt)) |> filter(!tools %in% c("other", "local")) |> pull(pc) |> sum() |> percent()`).
+Indeed, using such a tool as an alternative to Nettskjema was pointed out by several respondents with the above mentioned features as key to their needs even when "just" using it as a survey-tool and not for time series data collection.
+
+```{r}
+#| label: fig-lang
+#| fig-cap-location: margin
+#| fig-cap: "Summary of tools and languages reponders already use for theri behavioural experiments."
+#| out-width: 100%
+#| out-height: 3inch
+#| fig-height: 2.5 
+ggbar(dt, tools) + 
+  plot_spacer() +
+  (
+  ggbar(dt, plang) +
+    labs(title = "Language")
+) +
+  plot_layout(widths = c(1, .3, 1))
+```
+
+[During the time this survey was live, I was made aware that there is a service ([Testable](https://www.testable.org/)) that UiO has some license to that a team from Educational sciences has secured. Testable is a possible solution, though during exploration of this I still see little possibility to easily connect survey responses to existing data or get control over ID/anonymity in a secure and easily verifiable way. Also, based on communications with current users, Testable can only be used up to yellow data in LSIS terminology, thus not fulfilling the needs in terms of data security for quite a lot of researchers. There *might* be options to connect Testable to other University services that to handle more secure data, though this requires disengaging Testable's participant platform. However, Testable would still only solve part of the requested functionality.]{.aside}
+
+There are several readily available javascript frameworks to create such surveys/experiments in javascript:
+
+-   [jsPsych](https://www.jspsych.org/7.3/)
+-   [labjs](https://lab.js.org/)
+-   [psychojs](https://github.com/psychopy/psychojs) (js version of [psychopy](https://www.psychopy.org/))
+-   [opensesame](https://osdoc.cogsci.nl/)
+
+It should also be noted that a couple of responses did indicate they did not use any programming language to create their experiments.
+[Qualtrics](https://www.qualtrics.com/), for instance, also provides the ability to create experiments using a GUI, and several other services provide easily adaptable experiments through csv specifications of stimuli, onset time, stimulus duration, allowed responses etc.
+The initial proposed service here does not include the build of a GUI for users to create their experiments, but rather a way to deploy already created experiments.
+Creating such an addition might be something to consider in the long-term, after assessing initial success of the service.
+
+### Connected services
+
+The last survey question probed what services respondents would like this suggested new service to connect to.
+Depending on the scope of one's research, various tools could be of particular interest to connect to to create data flow to be easier.
+Several mention wanting to connect to Nettskjema (diktafon, video/image), and the possibility to send data to TSD and EduCloud as important.
+Integration with already existing tools developed by USIT for data collection seems to be a vital point for many.
+
+Several respondents mention (`r sum(str_count(dt$connection, "prolific|Prolific"), na.rm = TRUE)`) the want to connect to [Prolific Academic](https://www.prolific.co/), which is a service to connect researchers with reliable participants with the ability to pay for their time.
+Aside from Prolific, several more respondents mention the ability to pay their research subjects for their time without needing to retain their personal information as important.
+
+Additionally, several mention wanting to connect data to registry data (SSB, student grading, pasientjournal, etc,), and as such some possibility to connect data to other existing data seems to be valuable.
+This service might likely be highly valuable with possibility to use MinID login to verify participant identity for certain types of projects.
+
+### Scalability & Stability
+
+Given that quite a large number of the respondents seems to have proficiency in creating their experiments in javascript, one could argue they could set up their own NREC server and launch their experiments from there.
+However, setting up NREC servers to such a task is not trivial and requires technical expertise that we cannot expect all researchers to have (or have the time and interest to obtain among all their other activities).
+Furthermore, for red and black data it would require researchers to know how to programatically connect responses to services allowed to store such data.
+NREC servers might also provide some issues of scalability if the experiments launched require many answers in short succession (look at Nettskjema's scalability issue when the Corona survey launched).
+And lastly, any NREC launched service will require maintenance of used software/system libraries to patch security issues.
+These are not trivial issues for researchers to deal with, and should ideally be dealt of by professionals.
+
+# Proposal
+
+The survey revealed several applications and needs that were not previously thought of, and therefore the complexity of the overall proposal has also increased.
+Still, there are ways to split up the process into several pieces, that may be developed over time.
+
+## 1. Platform for launching JS experiments
+
+As a first instance, a platform that can launch already programmed JS experiments could enable advanced users to start exploring and providing feedback on the service.
+
+**Platform functionality / UI:**
+
+-   Initiate a project/experiments (i.e. an instance where a JS experiment would run).
+
+-   Choose storage location (on platform server (green, yellow), EduCloud (red), TSD (black)).
+
+-   Generate links to send out to participants (should ideally also take URL arguments like nettskjema to pre-populate certain experiment fields).
+
+-   Something akin to Nettskjemas Response overview, but no need for report generation (just something to show that responses are coming in and how many).
+
+## 2. Connecting to more services
+
+Given the popularity of step 1, the next important aspect would be exploring connections to other USIT services and external services like prolific.
+At this point, integration with GitHub/GitLab/Bitbucket etc for easy update of JS code would be amazing.
+Further development of the platform in step 1 would also naturally be part of this work.
+
+## 3. Platform for creating JS experiments
+
+The last piece of the puzzle would be something that would aid researchers without programming skills to create their JS experiments.
+This is non-trivial and the need for this was only expressed by a minority of responders.
+Still, for these researchers the entire platform would be unusable without this aspect.
+While the [jsPsych-Redux-GUI](https://github.com/jspsych/jsPsych-Redux-GUI) project seems to be inactive, there might be other similar projects available that would be used for this purpose and minimize USITs need to reinvent the wheel.
+
+# Conclusion
+
+There is a great deal of interest in a tool that will allow scientists to run more specialised behavioural data collection than may be provided through nettskjema.
+It is highly likely that such a tool could have wider adoption than indicated here, as this survey has been snowballed among primarily psychologists at UiO, which is the closest colleagues of the survey developer.
+We expect the general interest is indeed higher, and implementations would likely vary greatly depending on field of research.
