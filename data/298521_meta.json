@@ -11,16 +11,16 @@
   "sensitive_data": false,
   "editors": [
     {
+      "username": "thoschu@uio.no",
+      "name": "Thomas Wolfgang Schubert"
+    },
+    {
       "username": "athanasm@uio.no",
       "name": "Athanasia Monika Mowinckel"
     },
     {
       "username": "athanasm@api",
       "name": "access for athanasm"
-    },
-    {
-      "username": "thoschu@uio.no",
-      "name": "Thomas Wolfgang Schubert"
     }
   ],
   "elements": {

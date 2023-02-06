@@ -1,0 +1,167 @@
+---
+title: "The need to assistance in use of e-infrastructure within the Social sciences and Humanities"
+subtitle: "at Faculty of Social Sciences at the University of Oslo."
+author: "Dr. Athanasia M. Mowinckel"
+affiliation: "Center for Lifespan Changes in Brain and Cognition, PSI, SV, UiO"
+editor: visual
+execute:
+  message: false
+  warning: false
+  echo: true
+format:
+  html:
+    toc: true
+    toc-location: left
+    code-fold: true
+    code-summary: "Show the code"
+    embed-resources: true
+    fig-responsive: true
+    fig-cap-location: margin
+reference-location: margin
+citation-location: margin
+params:
+  run_nettskjema: false
+---
+
+```{r 'data'}
+#| include: false
+source(here::here("R", "utils.R"))
+ret <- get_data(315246, online = params$run_nettskjema)
+dt <- ret$dt
+meta <- ret$meta
+```
+
+```{r 'summaries'}
+#| include: false
+dt <- dt |> 
+    mutate(
+      institute = case_when(
+      grepl("promenta", institute, ignore.case = TRUE) ~ "Promenta",
+      grepl("psychology", institute, ignore.case = TRUE) ~ "PSI",
+      grepl("ritmo", institute, ignore.case = TRUE) ~ "RITMO",
+      grepl("psi", institute, ignore.case = TRUE) ~ "PSI",
+      TRUE ~ str_trim(institute)
+  ))
+
+faculty <- dt |> 
+  group_by(faculty) |> 
+  tally() |> 
+  mutate(pc = n/sum(n)) |> 
+  arrange(pc)
+
+inst <- dt |> 
+  group_by(institute) |> 
+  tally() |> 
+  mutate(pc = n/sum(n)) |> 
+  arrange(pc)
+
+help <- dt |> 
+  group_by(future_help_budget) |> 
+  tally()
+```
+
+
+## Background
+
+`r meta$elements$details[[1]]`
+
+`r meta$elements$details[[2]]`
+
+`r meta$elements$details[[3]]`
+
+`r meta$elements$details[[4]]`
+
+
+## Summary
+
+On `r dateform(meta$created)` the survey "*`r meta$title`*" was launched among researchers at the University of Oslo.
+As of `r dateform(as.Date(Sys.Date()))` the survey has collected `r nrow(dt)` responses from `r nrow(inst)` institutions, and among these responses, `r help |> filter(future_help_budget == "yes") |> pull(n)` said they would budget for the use of the services proposed if they were available.
+Another `r help |> filter(future_help_budget == "possibly") |> pull(n)` would consider it given their needs and the skills advertised.
+The need for assistance in the use of e-infrastructure is clearly signalled by the responses provided, and show as lack of support to properly utilise e-infrastructure by the researchers, either by lack of such support, or by under availability.
+
+## Survey results
+
+Of the `r nrow(dt)` responses to the survey, the majority of responders (`r percent(last(faculty$pc))`) were from `r last(faculty$faculty)`, and are mainly within `r last(inst$institute)` (`r percent(inst |> filter(institute %in% c("PSI", "Promenta", "Ritmo", "LCBC")) |> summarise(pc = sum(pc)) |> pull(pc))`).
+Full presentation of main work place can be found in @fig-work.
+The survey was disseminated by ways of the psi sympa mailing list to all scientific staff at PSI, in addition to targeted e-mails to colleagues outside of PSI that we knew might be interested in the services CAPRO aims at providing.
+
+```{r}
+#| label: fig-work
+#| fig-cap: "Summary of respondents places of work, and their general field of research"
+dt |> 
+  mutate(
+    institute = if_else(is.na(institute), "Undisclosed", institute),
+    institute = fct_infreq(institute)
+    ) |> 
+  ggbar(institute)
+
+```
+
+### Past needs
+
+A substantial part of the responders indicated they in the past needed help in utilising new technology to get their projects running (`r filter(dt, past_needs == "yes") |> nrow()`).
+These report mainly asking other researchers for help, but some report asking internal center staff (RITMO, LCBC) and IT (local or central).
+As seen in @fig-help, most reporting getting "some" help, which was the lowest category or possible support to receive (next to not receiving any).
+
+```{r}
+#| label: fig-help
+#| fig-cap: "Help received and needed"
+p1 <- dt |> 
+  drop_na(past_help) |> 
+  mutate(past_help = if_else(past_help == "no", "none", past_help)) |> 
+  ggbar(past_help) +
+  labs(title = "Amount of received help in the past")
+
+p2 <- dt |> 
+  ggplot(aes(past_satisfaction, group = past_satisfaction)) + 
+  geom_bar(aes(fill = past_satisfaction), show.legend = FALSE) +
+  see::scale_fill_flat_c(aesthetics = c("fill", "colour")) +
+  labs( y = "Count",
+        title = "Satisfaction with received help",
+        x = "Rating") +
+  scale_x_continuous(limits = c(0, 10.5)) +
+  coord_flip()
+
+p1 + p2
+
+```
+
+\
+
+### Future needs
+
+The survey further probed what type of needs researchers have for e-infrastructure in their projects.
+These are summarised in @fig-needs, where all categories of services CAPRO can provide were selected by a minimum of `r dt |> separate_rows(future_help, sep = ";") |> group_by(future_help) |> tally() |> pull(n) |> min()` responders. 
+
+```{r}
+#| label: fig-needs
+#| fig-cap: Areas researchers need help in were probed in 8 categories (in addition to an extra freetext option). Each bar is its own grouping, showing the percent of responders that indicated they needed help with this specific category.
+
+dt |> 
+  separate_rows(future_help, sep = ";") |> 
+  group_by(future_help) |> 
+  tally() |> 
+  mutate(
+    pc = n/nrow(dt),
+    future_help = fct_infreq(future_help)
+  ) |>
+  ggplot(aes(future_help, pc)) +
+  geom_bar(stat = "identity", aes(fill = pc), 
+           alpha = .7, 
+           color = "grey82", 
+           show.legend = FALSE) +
+  geom_label(aes(label = scales::percent(pc)), 
+             nudge_x = .1, 
+             alpha = .5) +
+  labs(title = "") +
+  scale_fill_viridis_c() +
+  coord_polar(clip = "off") +
+  scale_y_continuous(labels = scales::percent) +
+  theme(axis.title.x = element_blank())
+```
+
+## Conclusion
+
+The need and interest for assistance in setting up and utilising e-infrastrucure exists among a lot of researchers at PSI in particular, but likely also in other parts of UiO and external institutions. 
+CAPRO could provide valuable assistance to more efficiently and more transparently work with data through custom and standardised applications, as well as through workshops. 
+

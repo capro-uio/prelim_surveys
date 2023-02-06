@@ -1,0 +1,339 @@
+{
+  "title": "Survey on need for data/technical assistance",
+  "language": "en",
+  "created": "2023-02-01",
+  "modified": "2023-02-06",
+  "opened": "2023-02-01",
+  "respondents": "ALL",
+  "contact": "athanasm@uio.no",
+  "codebook": true,
+  "personal_data": false,
+  "sensitive_data": false,
+  "editors": [
+    {
+      "username": "athanasm@api",
+      "name": "access for athanasm"
+    },
+    {
+      "username": "athanasm@uio.no",
+      "name": "Athanasia Monika Mowinckel"
+    }
+  ],
+  "elements": {
+    "type": ["TEXT", "TEXT", "TEXT", "TEXT", "PAGE_BREAK", "RADIO", "QUESTION", "HEADING", "RADIO", "QUESTION_MULTILINE", "RADIO", "LINEAR_SCALE", "HEADING", "CHECKBOX", "QUESTION_MULTILINE", "QUESTION_MULTILINE", "RADIO", "QUESTION_MULTILINE"],
+    "order": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18],
+    "details": [
+      "Capturing and processing large data sets is becoming increasingly important in social sciences and humanities, but project leaders can struggle with implementing the necessary technical solutions to deal with increasing demands on open and reproducible science.  For instance, working open source software like Python and R, using version control like git and GitHub, using Open Science Framework, using parallell computing on Sigma2/TSD, using TSD efficiently, structuring data according to FAIR principles etc.\n\nThese increasing demands from funders and instutitions to implement new ways of working that requires technical solutions are taxing for researcers that want to focus on the science and not dealing with new tools.\n",
+      "Researchers often need help in setting up systems to get their projects off on the right track, and the earlier this can be done, the more likely a project is to meet its deliverables. But it is not realistic to expect every researcher to have the skillset needed to meet the increasing demands on technical solutions. Having the ability to utilise specialised staff, with experience and expertise in utilising a variety of technical solutions for open and reproducible science, will enable researchers to focus on the research. \n",
+      "Furthermore, most projects only have this need in the beginning  (and maybe at the end) of a project, making it difficult to justify setting aside budgets to hire staff to do the work. So far, only large and established labs and centers with stable external funding are able to employ such staff on fulltime basis.\n",
+      "We, a group of data scientists currently associated with LCBC and Promenta, believe a new model of organising this type of workforce is a necessity at UiO in today&#39;s research landscape. We are thus considering establishing a core facility dedicated to assist UiO researchers in the capture, structuring and processing of complex life science data. For this reorganisation to occur, it would be beneficial for us to know how many, to which extent, and for what types of tasks researchers need this type of help. We would greatly appreciate any feedback and thoughts on this from our colleagues.\n",
+      {},
+      [
+        {
+          "question": "What Faculty at UiO are you a part of?",
+          "question_codebook": "faculty",
+          "question_mandatory": false,
+          "answer_order": "1",
+          "answer_option": "SV",
+          "answer_codebook": "sv",
+          "answer_preselected": false,
+          "answer_correct": false
+        },
+        {
+          "question": "What Faculty at UiO are you a part of?",
+          "question_codebook": "faculty",
+          "question_mandatory": false,
+          "answer_order": "2",
+          "answer_option": "MatNat",
+          "answer_codebook": "matnat",
+          "answer_preselected": false,
+          "answer_correct": false
+        },
+        {
+          "question": "What Faculty at UiO are you a part of?",
+          "question_codebook": "faculty",
+          "question_mandatory": false,
+          "answer_order": "3",
+          "answer_option": "HF",
+          "answer_codebook": "hf",
+          "answer_preselected": false,
+          "answer_correct": false
+        },
+        {
+          "question": "What Faculty at UiO are you a part of?",
+          "question_codebook": "faculty",
+          "question_mandatory": false,
+          "answer_order": "4",
+          "answer_option": "Med",
+          "answer_codebook": "med",
+          "answer_preselected": false,
+          "answer_correct": false
+        },
+        {
+          "question": "What Faculty at UiO are you a part of?",
+          "question_codebook": "faculty",
+          "question_mandatory": false,
+          "answer_order": "5",
+          "answer_option": "UV",
+          "answer_codebook": "uv",
+          "answer_preselected": false,
+          "answer_correct": false
+        },
+        {
+          "question": "What Faculty at UiO are you a part of?",
+          "question_codebook": "faculty",
+          "question_mandatory": false,
+          "answer_order": "6",
+          "answer_option": "Other",
+          "answer_codebook": "other",
+          "answer_preselected": false,
+          "answer_correct": false
+        },
+        {
+          "question": "What Faculty at UiO are you a part of?",
+          "question_codebook": "faculty",
+          "question_mandatory": false,
+          "answer_order": "7",
+          "answer_option": "External",
+          "answer_codebook": "external",
+          "answer_preselected": false,
+          "answer_correct": false
+        }
+      ],
+      [
+        {
+          "question": "Which Institute/Center are you a part of?",
+          "question_descr": "center/institute acronym\n",
+          "question_codebook": "institute",
+          "question_mandatory": false
+        }
+      ],
+      "unknown element class",
+      [
+        {
+          "question": "Have you had the need of help in setting up/utilising new technology in any of your recent projects?",
+          "question_codebook": "past_needs",
+          "question_mandatory": false,
+          "answer_order": "1",
+          "answer_option": "Yes",
+          "answer_codebook": "yes",
+          "answer_preselected": false,
+          "answer_correct": false
+        },
+        {
+          "question": "Have you had the need of help in setting up/utilising new technology in any of your recent projects?",
+          "question_codebook": "past_needs",
+          "question_mandatory": false,
+          "answer_order": "2",
+          "answer_option": "No",
+          "answer_codebook": "no",
+          "answer_preselected": false,
+          "answer_correct": false
+        }
+      ],
+      "unknown element class",
+      [
+        {
+          "question": "Did you receive the help you needed?",
+          "question_codebook": "past_help",
+          "question_mandatory": false,
+          "answer_order": "1",
+          "answer_option": "No, I received no help",
+          "answer_codebook": "no",
+          "answer_preselected": false,
+          "answer_correct": false
+        },
+        {
+          "question": "Did you receive the help you needed?",
+          "question_codebook": "past_help",
+          "question_mandatory": false,
+          "answer_order": "2",
+          "answer_option": "I received some help",
+          "answer_codebook": "some",
+          "answer_preselected": false,
+          "answer_correct": false
+        },
+        {
+          "question": "Did you receive the help you needed?",
+          "question_codebook": "past_help",
+          "question_mandatory": false,
+          "answer_order": "3",
+          "answer_option": "I received much help",
+          "answer_codebook": "much",
+          "answer_preselected": false,
+          "answer_correct": false
+        },
+        {
+          "question": "Did you receive the help you needed?",
+          "question_codebook": "past_help",
+          "question_mandatory": false,
+          "answer_order": "4",
+          "answer_option": "I received all the help I needed",
+          "answer_codebook": "everything",
+          "answer_preselected": false,
+          "answer_correct": false
+        }
+      ],
+      [
+        {
+          "question": "Where you satisfied with the help you received?",
+          "question_codebook": "past_satisfaction",
+          "question_mandatory": false,
+          "question_order": 1,
+          "question_preselected": true,
+          "question_rangemarks": true,
+          "question_scaletype": "START_END",
+          "question_minvalue": 0,
+          "question_mintext": "Completely satisfied",
+          "question_maxvalue": 10,
+          "question_maxtext": "Completely satisfied"
+        }
+      ],
+      "unknown element class",
+      [
+        {
+          "question": "What type of help would you like to receive?",
+          "question_mandatory": false,
+          "answer_order": "1",
+          "answer_option": "Setting up data flow (data capture, storage, logging etc)",
+          "answer_codebook": "data-flow",
+          "answer_preselected": false,
+          "answer_correct": false
+        },
+        {
+          "question": "What type of help would you like to receive?",
+          "question_mandatory": false,
+          "answer_order": "2",
+          "answer_option": "Data processing (analyses, parallell computing)",
+          "answer_codebook": "data-processing",
+          "answer_preselected": false,
+          "answer_correct": false
+        },
+        {
+          "question": "What type of help would you like to receive?",
+          "question_mandatory": false,
+          "answer_order": "3",
+          "answer_option": "Adhering to FAIR principles",
+          "answer_codebook": "fair",
+          "answer_preselected": false,
+          "answer_correct": false
+        },
+        {
+          "question": "What type of help would you like to receive?",
+          "question_mandatory": false,
+          "answer_order": "4",
+          "answer_option": "Enabling reproducibility &amp; doing (more) open science",
+          "answer_codebook": "reproducible",
+          "answer_preselected": false,
+          "answer_correct": false
+        },
+        {
+          "question": "What type of help would you like to receive?",
+          "question_mandatory": false,
+          "answer_order": "5",
+          "answer_option": "Implementing new methods/tools",
+          "answer_codebook": "new-methods",
+          "answer_preselected": false,
+          "answer_correct": false
+        },
+        {
+          "question": "What type of help would you like to receive?",
+          "question_mandatory": false,
+          "answer_order": "6",
+          "answer_option": "Learning new tools/methods (attending workshops)",
+          "answer_codebook": "learning",
+          "answer_preselected": false,
+          "answer_correct": false
+        },
+        {
+          "question": "What type of help would you like to receive?",
+          "question_mandatory": false,
+          "answer_order": "7",
+          "answer_option": "Help in navigating UiO infrastructure for research (choosing appropriate infrastructure for my project)",
+          "answer_codebook": "help-navigating",
+          "answer_preselected": false,
+          "answer_correct": false
+        },
+        {
+          "question": "What type of help would you like to receive?",
+          "question_mandatory": false,
+          "answer_order": "8",
+          "answer_option": "Help in using UiO infrastructure for research",
+          "answer_codebook": "help-using",
+          "answer_preselected": false,
+          "answer_correct": false
+        },
+        {
+          "question": "What type of help would you like to receive?",
+          "question_mandatory": false,
+          "answer_order": "9",
+          "answer_option": "Other",
+          "answer_codebook": "other",
+          "answer_preselected": false,
+          "answer_correct": false
+        }
+      ],
+      "unknown element class",
+      "unknown element class",
+      [
+        {
+          "question": "Would you include in your project budgets the use of staff to aid you if you knew there were people you could approach to help?",
+          "question_descr": "For instance, if you are applying for a new grant and see that you could need help in enabling you to following your datamanagement plan properly. Perhaps you could add in the budget a couple of person months to hire help to get the system set up.\n",
+          "question_codebook": "future_help_budget",
+          "question_mandatory": false,
+          "answer_order": "1",
+          "answer_option": "Yes, for sure",
+          "answer_codebook": "yes",
+          "answer_preselected": false,
+          "answer_correct": false
+        },
+        {
+          "question": "Would you include in your project budgets the use of staff to aid you if you knew there were people you could approach to help?",
+          "question_descr": "For instance, if you are applying for a new grant and see that you could need help in enabling you to following your datamanagement plan properly. Perhaps you could add in the budget a couple of person months to hire help to get the system set up.\n",
+          "question_codebook": "future_help_budget",
+          "question_mandatory": false,
+          "answer_order": "2",
+          "answer_option": "Possibly, depends on their skills and my needs",
+          "answer_codebook": "possibly",
+          "answer_preselected": false,
+          "answer_correct": false
+        },
+        {
+          "question": "Would you include in your project budgets the use of staff to aid you if you knew there were people you could approach to help?",
+          "question_descr": "For instance, if you are applying for a new grant and see that you could need help in enabling you to following your datamanagement plan properly. Perhaps you could add in the budget a couple of person months to hire help to get the system set up.\n",
+          "question_codebook": "future_help_budget",
+          "question_mandatory": false,
+          "answer_order": "3",
+          "answer_option": "Unlikely, I&#39;m not convinced of the need",
+          "answer_codebook": "unlikely",
+          "answer_preselected": false,
+          "answer_correct": false
+        },
+        {
+          "question": "Would you include in your project budgets the use of staff to aid you if you knew there were people you could approach to help?",
+          "question_descr": "For instance, if you are applying for a new grant and see that you could need help in enabling you to following your datamanagement plan properly. Perhaps you could add in the budget a couple of person months to hire help to get the system set up.\n",
+          "question_codebook": "future_help_budget",
+          "question_mandatory": false,
+          "answer_order": "4",
+          "answer_option": "No, I already have the knowledge I need to do this myself",
+          "answer_codebook": "no",
+          "answer_preselected": false,
+          "answer_correct": false
+        },
+        {
+          "question": "Would you include in your project budgets the use of staff to aid you if you knew there were people you could approach to help?",
+          "question_descr": "For instance, if you are applying for a new grant and see that you could need help in enabling you to following your datamanagement plan properly. Perhaps you could add in the budget a couple of person months to hire help to get the system set up.\n",
+          "question_codebook": "future_help_budget",
+          "question_mandatory": false,
+          "answer_order": "5",
+          "answer_option": "No, I don&#39;t think this applies to me and my research",
+          "answer_codebook": "napplicable",
+          "answer_preselected": false,
+          "answer_correct": false
+        }
+      ],
+      "unknown element class"
+    ]
+  },
+  "form_id": 315246
+}

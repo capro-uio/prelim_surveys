@@ -1,0 +1,193 @@
+{
+  "title": "User survey LCBC",
+  "language": "en",
+  "created": "2023-01-31",
+  "modified": "2023-02-06",
+  "opened": "2023-01-31",
+  "respondents": "FEIDE",
+  "contact": "athanasm@uio.no",
+  "codebook": true,
+  "personal_data": false,
+  "sensitive_data": false,
+  "editors": [
+    {
+      "username": "athanasm@api",
+      "name": "access for athanasm"
+    },
+    {
+      "username": "athanasm@uio.no",
+      "name": "Athanasia Monika Mowinckel"
+    }
+  ],
+  "elements": {
+    "type": ["TEXT", "RADIO", "RADIO", "LINEAR_SCALE", "QUESTION_MULTILINE", "QUESTION_MULTILINE", "QUESTION_MULTILINE", "RADIO", "LINEAR_SCALE", "QUESTION_MULTILINE", "QUESTION_MULTILINE", "QUESTION_MULTILINE"],
+    "order": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+    "details": [
+      "At LCBC, there is a set of core staff that deal with processing and structuring of data and analyses. Markus, Inge and Mo work full-time in securing safe workflows and making sure data can be used for staff. In addition we have a dedicated person for MRI general processing, the last years this has been Jamila and Fredrik.\n\nThis set of staff is working on an application that deals with their working conditions and would like to have feedback from those who have worked with them about how the work they do impacts your own work.\n",
+      [
+        {
+          "question": "What is your main association with the staff?",
+          "question_codebook": "affiliation",
+          "question_mandatory": false,
+          "answer_order": "1",
+          "answer_option": "Lifebrain partner",
+          "answer_codebook": "lifebrain",
+          "answer_preselected": false,
+          "answer_correct": false
+        },
+        {
+          "question": "What is your main association with the staff?",
+          "question_codebook": "affiliation",
+          "question_mandatory": false,
+          "answer_order": "2",
+          "answer_option": "LCBC staff",
+          "answer_codebook": "lcbc",
+          "answer_preselected": false,
+          "answer_correct": false
+        },
+        {
+          "question": "What is your main association with the staff?",
+          "question_codebook": "affiliation",
+          "question_mandatory": false,
+          "answer_order": "3",
+          "answer_option": "Other general collaborator",
+          "answer_codebook": "collaborator",
+          "answer_preselected": false,
+          "answer_correct": false
+        }
+      ],
+      [
+        {
+          "question": "What is your position?",
+          "question_codebook": "position",
+          "question_mandatory": false,
+          "answer_order": "1",
+          "answer_option": "RA / Intern",
+          "answer_codebook": "ra",
+          "answer_preselected": false,
+          "answer_correct": false
+        },
+        {
+          "question": "What is your position?",
+          "question_codebook": "position",
+          "question_mandatory": false,
+          "answer_order": "2",
+          "answer_option": "PhD candidate",
+          "answer_codebook": "phd",
+          "answer_preselected": false,
+          "answer_correct": false
+        },
+        {
+          "question": "What is your position?",
+          "question_codebook": "position",
+          "question_mandatory": false,
+          "answer_order": "3",
+          "answer_option": "Post-doc",
+          "answer_codebook": "postdoc",
+          "answer_preselected": false,
+          "answer_correct": false
+        },
+        {
+          "question": "What is your position?",
+          "question_codebook": "position",
+          "question_mandatory": false,
+          "answer_order": "4",
+          "answer_option": "Researcher",
+          "answer_codebook": "researcher",
+          "answer_preselected": false,
+          "answer_correct": false
+        },
+        {
+          "question": "What is your position?",
+          "question_codebook": "position",
+          "question_mandatory": false,
+          "answer_order": "5",
+          "answer_option": "Professor (incl. tenure track)",
+          "answer_codebook": "professor",
+          "answer_preselected": false,
+          "answer_correct": false
+        },
+        {
+          "question": "What is your position?",
+          "question_codebook": "position",
+          "question_mandatory": false,
+          "answer_order": "6",
+          "answer_option": "Admin",
+          "answer_codebook": "admin",
+          "answer_preselected": false,
+          "answer_correct": false
+        }
+      ],
+      [
+        {
+          "question": "Do you feel comfortable asking any the staff for help or suggesting things that might aid your work?",
+          "question_codebook": "comfortable",
+          "question_mandatory": false,
+          "question_order": 1,
+          "question_preselected": true,
+          "question_rangemarks": true,
+          "question_scaletype": "START_END",
+          "question_minvalue": 0,
+          "question_mintext": "Very comfortable",
+          "question_maxvalue": 10,
+          "question_maxtext": "Very comfortable"
+        }
+      ],
+      "unknown element class",
+      "unknown element class",
+      "unknown element class",
+      [
+        {
+          "question": "Have you directly benefited (that you know of) from the work any of the staff have done?",
+          "question_codebook": "benefit",
+          "question_mandatory": false,
+          "answer_order": "1",
+          "answer_option": "Yes",
+          "answer_codebook": "yes",
+          "answer_preselected": false,
+          "answer_correct": false
+        },
+        {
+          "question": "Have you directly benefited (that you know of) from the work any of the staff have done?",
+          "question_codebook": "benefit",
+          "question_mandatory": false,
+          "answer_order": "2",
+          "answer_option": "No",
+          "answer_codebook": "no",
+          "answer_preselected": false,
+          "answer_correct": false
+        },
+        {
+          "question": "Have you directly benefited (that you know of) from the work any of the staff have done?",
+          "question_codebook": "benefit",
+          "question_mandatory": false,
+          "answer_order": "3",
+          "answer_option": "I&#39;m not sure",
+          "answer_codebook": "unsure",
+          "answer_preselected": false,
+          "answer_correct": false
+        }
+      ],
+      [
+        {
+          "question": "Do you find their work generally aids your own work?",
+          "question_codebook": "help",
+          "question_mandatory": false,
+          "question_order": 1,
+          "question_preselected": true,
+          "question_rangemarks": true,
+          "question_scaletype": "START_MID_END",
+          "question_minvalue": 0,
+          "question_mintext": "Not at all",
+          "question_midtext": "Neither yes nor no",
+          "question_maxvalue": 10,
+          "question_maxtext": "Not at all"
+        }
+      ],
+      "unknown element class",
+      "unknown element class",
+      "unknown element class"
+    ]
+  },
+  "form_id": 314876
+}

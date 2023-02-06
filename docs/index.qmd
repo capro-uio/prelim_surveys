@@ -1,0 +1,21 @@
+---
+title: "Survey reports for CAPRO core facility application"
+format: html
+editor: visual
+---
+
+<ul>
+```{r}
+#| echo: false
+#| results: asis
+list.files(here::here("docs"), "html", full.names = TRUE) |> 
+  sapply(function(x){
+    title <- readLines(x, 30)
+    title <- title[grepl("^<title", title)]
+    title <- nettskjemar:::strip_html(title)
+    sprintf('<li><a href="%s">%s</a></li>',
+            basename(x), title)
+  }, USE.NAMES = FALSE) |> 
+  cat(sep="\n")
+```
+</ul>
