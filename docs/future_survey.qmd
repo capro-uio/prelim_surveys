@@ -116,7 +116,6 @@ p1 <- dt |>
 p2 <- dt |> 
   ggplot(aes(past_satisfaction, group = past_satisfaction)) + 
   geom_bar(aes(fill = past_satisfaction), show.legend = FALSE) +
-  see::scale_fill_flat_c(aesthetics = c("fill", "colour")) +
   labs( y = "Count",
         title = "Satisfaction with received help",
         x = "Rating") +
@@ -155,7 +154,6 @@ dt |>
              nudge_x = .1, 
              alpha = .5) +
   labs(title = "") +
-  scale_fill_viridis_c() +
   coord_polar(clip = "off") +
   scale_y_continuous(labels = scales::percent) +
   theme(axis.title.x = element_blank())

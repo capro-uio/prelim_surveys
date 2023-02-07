@@ -71,7 +71,6 @@ dt |>
   tally() |> 
   ggplot(aes(label = dept, size = n, color = n)) +
   geom_text_wordcloud(show.legend = FALSE) +
-  scale_colour_gradientn(colours = PAL) +
   scale_size_area(max_size = 10)
 ```
 
@@ -118,13 +117,10 @@ As such, several have responded with significantly higher numbers of responses i
 #| label: fig-yearly
 #| fig-cap: "The number of yearly expected responses from each institution."
 #| column: margin
-#| fig-height: 6
-#| fig-width: 3
 dt |> 
   mutate(work_place = fct_infreq(work_place)) |> 
   ggplot(aes(1, estimate, fill = work_place, colour = work_place)) + 
   geom_bar(stat =  "identity") +
-  see::scale_fill_oi(aesthetics = c("fill", "colour")) +
   labs( y = "Estmiated number of yearly responses") +
   scale_y_continuous(labels = thousand) +
   theme(axis.text.x = element_blank(),

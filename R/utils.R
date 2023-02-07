@@ -14,7 +14,21 @@ theme_capro <- function(){
 }
 
 theme_set(theme_capro())
-PAL <- see::palette_okabeito()(3)
+PAL <- c("#CC4C4C", "#85bfbf", "#6fd66f", "#6f6fd6", "#d66fd6", "#c0c2c4", "#a285bf", "#bfa285" )
+PALC <- colorRampPalette(c("#CC4C4C", "#c0c2c4", "#85bfbf"))
+
+scale_fill_discrete <- function(...) {
+  scale_fill_manual(..., values = PAL)
+}
+
+scale_colour_continuous <- function(...) {
+  scale_colour_gradientn(colours = PALC(100), ...)
+}
+
+scale_fill_continuous <- function(...) {
+  scale_fill_gradientn(colours = PALC(100), ...)
+}
+
 
 get_data <- function(form, online = FALSE) {
   metaf <- here::here("data", paste0(form, "_meta.json"))
