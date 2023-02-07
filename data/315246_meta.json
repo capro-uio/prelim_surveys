@@ -11,12 +11,12 @@
   "sensitive_data": false,
   "editors": [
     {
-      "username": "athanasm@api",
-      "name": "access for athanasm"
-    },
-    {
       "username": "athanasm@uio.no",
       "name": "Athanasia Monika Mowinckel"
+    },
+    {
+      "username": "athanasm@api",
+      "name": "access for athanasm"
     }
   ],
   "elements": {

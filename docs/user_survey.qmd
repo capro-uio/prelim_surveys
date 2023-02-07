@@ -19,7 +19,7 @@ format:
 reference-location: margin
 citation-location: margin
 params:
-  run_nettskjema: false
+  run_nettskjema: true
 ---
 
 ```{r 'data'}
@@ -141,8 +141,8 @@ p1 + p2
 Indeed, in the three free-text boxes provided, many comments encompass the benefit of having the availability of the team, and that the need for more staff doing similar tasks would clearly aid others in doing their work.
 
 
-> _"`r dt$positives[8]`"_
-> Survey responder nr. 8
+> _"`r dt$positives[[nrow(dt) - 4]]`"_
+> Survey responder nr. 5
 
 # Conclusion
 

@@ -21,7 +21,7 @@ format:
 reference-location: margin
 citation-location: margin
 params:
-  run_nettskjema: false
+  run_nettskjema: true
 ---
 
 ```{r 'data'}
@@ -100,7 +100,7 @@ dt |>
 
 ### Past needs
 
-A substantial part of the responders indicated they in the past needed help in utilising new technology to get their projects running (`r filter(dt, past_needs == "yes") |> nrow()`).
+A substantial part of the responders indicated they in the past needed help in utilising new technology to get their projects running (`r percent(filter(dt, past_needs == "yes") |> nrow() / nrow(dt))`).
 These report mainly asking other researchers for help, but some report asking internal center staff (RITMO, LCBC) and IT (local or central).
 As seen in @fig-help, most reporting getting "some" help, which was the lowest category or possible support to receive (next to not receiving any).
 
@@ -136,27 +136,41 @@ These are summarised in @fig-needs, where all categories of services CAPRO can p
 ```{r}
 #| label: fig-needs
 #| fig-cap: Areas researchers need help in were probed in 8 categories (in addition to an extra freetext option). Each bar is its own grouping, showing the percent of responders that indicated they needed help with this specific category.
+#| fig-height: 7
+
+help_dictorionary <- lapply(meta$elements$details[[14]], function(x){
+    tibble(text=x$answer_option, future_help=x$answer_codebook)
+}) |> bind_rows()
 
 dt |> 
   separate_rows(future_help, sep = ";") |> 
   group_by(future_help) |> 
   tally() |> 
+  left_join(help_dictorionary) |>
   mutate(
+    text = sprintf("%s: %s", future_help, text),
+    text = str_wrap(text),
     pc = n/nrow(dt),
     future_help = fct_infreq(future_help)
   ) |>
   ggplot(aes(future_help, pc)) +
+    geom_point(size = 0,
+               aes(colour = text)) +
   geom_bar(stat = "identity", aes(fill = pc), 
            alpha = .7, 
            color = "grey82", 
            show.legend = FALSE) +
   geom_label(aes(label = scales::percent(pc)), 
-             nudge_x = .1, 
-             alpha = .5) +
-  labs(title = "") +
-  coord_polar(clip = "off") +
-  scale_y_continuous(labels = scales::percent) +
-  theme(axis.title.x = element_blank())
+             alpha = .5,
+             nudge_y = .04) +
+  labs(title = "", y = "") +
+  scale_y_continuous(labels = scales::percent,
+                     limits = c(0, 1)) +
+  theme(axis.title.x = element_blank(),
+        legend.position = "bottom",
+        legend.title = element_blank(),
+        legend.text = element_text(size = 12)) +
+  guides(color = guide_legend(ncol = 1))  
 ```
 
 ## Conclusion
