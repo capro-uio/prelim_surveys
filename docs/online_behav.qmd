@@ -194,12 +194,12 @@ NREC servers might also provide some issues of scalability if the experiments la
 And lastly, any NREC launched service will require maintenance of used software/system libraries to patch security issues.
 These are not trivial issues for researchers to deal with, and should ideally be dealt of by professionals.
 
-# Proposal
+## Proposal
 
 The survey revealed several applications and needs that were not previously thought of, and therefore the complexity of the overall proposal has also increased.
 Still, there are ways to split up the process into several pieces, that may be developed over time.
 
-## 1. Platform for launching JS experiments
+### 1. Platform for launching JS experiments
 
 As a first instance, a platform that can launch already programmed JS experiments could enable advanced users to start exploring and providing feedback on the service.
 
@@ -210,7 +210,7 @@ As a first instance, a platform that can launch already programmed JS experiment
 -   Generate links to send out to participants (should ideally also take URL arguments like nettskjema to pre-populate certain experiment fields).  
 -   Something akin to Nettskjemas Response overview, but no need for report generation (just something to show that responses are coming in and how many).
 
-## 2. Database of existing experiments for import
+### 2. Database of existing experiments for import
 
 Many experiments are likely to be re-used over time, and some are adaptations of staple experiments that exist in various research fields already.
 A solution akin to Pavlovia, where one can explore existing experiments and import these to your own projects, could greatly alleviate the pain of programming custom experiments from scratch.
@@ -223,21 +223,21 @@ These experiments should all be published here with cc-by licences.
 -   Possibility to import to project, or launch a test to see it in action  
 -   More functionality like tags etc could come over time  
 
-## 3. Connecting to more services & user-friendliness
+### 3. Connecting to more services & user-friendliness
 
 Given the popularity of the platform, the next important aspect would be exploring connections to other USIT services and external services like prolific.
 At this point, integration with GitHub/GitLab/Bitbucket etc for easy update of JS code would be amazing.
 Further development for the user friendliness of the platform would also naturally be part of this work.
 
 
-## 4. Platform for creating JS experiments
+### 4. Platform for creating JS experiments
 
 The last piece of the puzzle would be something that would aid researchers without programming skills to create their JS experiments.
 This is non-trivial and the need for this was only expressed by a minority of responders.
 Still, for these researchers the entire platform would be unusable without this aspect.
 While the [jsPsych-Redux-GUI](https://github.com/jspsych/jsPsych-Redux-GUI) project seems to be inactive, there might be other similar projects available that would be used for this purpose and minimize USITs need to reinvent the wheel.
 
-# Conclusion
+## Conclusion
 
 There is a great deal of interest in a tool that will allow scientists to run more specialised behavioural data collection than may be provided through nettskjema.
 It is highly likely that such a tool could have wider adoption than indicated here, as this survey has been snowballed among primarily psychologists at UiO, which is the closest colleagues of the survey developer.
