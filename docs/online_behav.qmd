@@ -213,18 +213,18 @@ As a first instance, a platform that can launch already programmed JS experiment
 
 -   Something akin to Nettskjemas Response overview, but no need for report generation (just something to show that responses are coming in and how many).
 
-## 2. Connecting to more services
-
-Given the popularity of step 1, the next important aspect would be exploring connections to other USIT services and external services like prolific.
-At this point, integration with GitHub/GitLab/Bitbucket etc for easy update of JS code would be amazing.
-Further development for the user friendliness of the platform would also naturally be part of this work.
-
-## 3. Database of existing experiments for import
+## 2. Database of existing experiments for import
 
 Many experiments are likely to be re-used over time, and some are adaptations of staple experiments that exist in various research fields already.
 A solution akin to Pavlovia, where one can explore existing experiments and import these to your own projects, could greatly alleviate the pain of programming custom experiments from scratch.
 Users can make their own experiments (not data) available for reuse, and other users can import/download and adapt the experiment to their needs.
 These experiments should all be published here with cc-by licences.
+
+## 3. Connecting to more services
+
+Given the popularity of step 1, the next important aspect would be exploring connections to other USIT services and external services like prolific.
+At this point, integration with GitHub/GitLab/Bitbucket etc for easy update of JS code would be amazing.
+Further development for the user friendliness of the platform would also naturally be part of this work.
 
 
 ## 4. Platform for creating JS experiments
