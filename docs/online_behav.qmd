@@ -205,12 +205,9 @@ As a first instance, a platform that can launch already programmed JS experiment
 
 **Platform functionality / UI:**
 
--   Initiate a project/experiments (i.e. an instance where a JS experiment would run).
-
--   Choose storage location (on platform server (green, yellow), EduCloud (red), TSD (black)).
-
--   Generate links to send out to participants (should ideally also take URL arguments like nettskjema to pre-populate certain experiment fields).
-
+-   Initiate a project/experiments (i.e. an instance where a JS experiment would run).  
+-   Choose storage location (on platform server (green, yellow), EduCloud (red), TSD (black)).  
+-   Generate links to send out to participants (should ideally also take URL arguments like nettskjema to pre-populate certain experiment fields).  
 -   Something akin to Nettskjemas Response overview, but no need for report generation (just something to show that responses are coming in and how many).
 
 ## 2. Database of existing experiments for import
@@ -220,9 +217,15 @@ A solution akin to Pavlovia, where one can explore existing experiments and impo
 Users can make their own experiments (not data) available for reuse, and other users can import/download and adapt the experiment to their needs.
 These experiments should all be published here with cc-by licences.
 
-## 3. Connecting to more services
+**Platform functionality / UI:**
 
-Given the popularity of step 1, the next important aspect would be exploring connections to other USIT services and external services like prolific.
+-   Gallery of experiments with title  
+-   Possibility to import to project, or launch a test to see it in action  
+-   More functionality like tags etc could come over time  
+
+## 3. Connecting to more services & user-friendliness
+
+Given the popularity of the platform, the next important aspect would be exploring connections to other USIT services and external services like prolific.
 At this point, integration with GitHub/GitLab/Bitbucket etc for easy update of JS code would be amazing.
 Further development for the user friendliness of the platform would also naturally be part of this work.
 
