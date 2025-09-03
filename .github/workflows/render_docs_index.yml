@@ -1,4 +1,4 @@
-name: Render MRI Survey Report
+name: Render Docs Index
 
 on:
   push:
