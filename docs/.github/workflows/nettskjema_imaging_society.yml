@@ -1,0 +1,56 @@
+name: Render MRI Survey Report
+
+on:
+  schedule:
+    - cron: '13 6 * * *'
+  workflow_dispatch:
+
+jobs:
+  build-and-render:
+    runs-on: ubuntu-latest
+    env:
+      RENV_PATHS_ROOT: ~/.local/share/renv
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup R
+        uses: r-lib/actions/setup-r@v2
+
+      - name: Cache R packages
+        uses: actions/cache@v3
+        with:
+          path: ~/.local/share/renv
+          key: ${{ runner.os }}-renv-${{ hashFiles('renv.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-renv-
+      
+      - name: Install system dependencies for R packages
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libcurl4-openssl-dev
+
+      - name: Setup Quarto
+        uses: quarto-dev/quarto-action@v2
+        with:
+          version: "latest"
+
+      - name: Install dependencies from renv.lock
+        run: |
+          Rscript -e 'renv::restore()'
+
+      - name: Render Quarto document
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          NETTSKJEMA_CLIENT_ID: ${{ secrets.NETTSKJEMA_CLIENT_ID }}
+          NETTSKJEMA_CLIENT_SECRET: ${{ secrets.NETTSKJEMA_CLIENT_SECRET }}
+        run: |
+          quarto render docs/imagingsociety_2025.qmd
+
+      - name: Commit and push changes
+        run: |
+          git config user.name "GitHub Actions Bot"
+          git config user.email "actions-bot@users.noreply.github.com"
+          git add MRI_Survey_Data_Analysis_Report.html
+          git commit -m "Automated report rendering: $(date -u +'%Y-%m-%d')" || true
+          git push
