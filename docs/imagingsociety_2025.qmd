@@ -2,6 +2,7 @@
 title: "User survey for ImagingSociety 2025 - National MRI research infrastructure in Norway"
 author: "Dr. Athanasia M. Mowinckel"
 affiliation: "Center for Lifespan Changes in Brain and Cognition, PSI, SV, UiO"
+date: "`r Sys.Date()`"
 editor: visual
 execute:
   message: false
@@ -46,7 +47,9 @@ knitr::opts_chunk$set(
 
 # Define survey ID
 survey_id <- 540995
-dt <- ns_get_data(survey_id)
+cb <- ns_get_codebook(540995)
+dt <- ns_get_data(survey_id) |>
+  ns_add_labels(cb)
 
 # Function to summarize text responses using Gemini LMM
 summarize_text_response <- function(text_vector, prompt) {
@@ -75,19 +78,15 @@ summarize_text_response <- function(text_vector, prompt) {
 }
 ```
 
-
 ## Background
 
-This report presents an analysis of the survey data collected for the national grant scheme application for MRI research infrastructure in Norway. 
-The survey was designed to gather insights from the research community on the current use, needs, and challenges related to MRI for human research.
+This report presents an analysis of the survey data collected for the national grant scheme application for MRI research infrastructure in Norway. The survey was designed to gather insights from the research community on the current use, needs, and challenges related to MRI for human research.
 
 The following sections will present a summary of the key findings, including graphical representations of the quantitative data and a textual summary of the open-ended responses, with the help of the Gemini LMM.
 
-
 ## Survey Results
 
-Of the `r nrow(dt)` responses, `r sum(dt$mri_current_use == "yes")` participants reported they currently use MRI for research. 
-The majority of respondents, `r scales::percent(sum(dt$mri_future_use) / nrow(dt))`, indicated a future interest in using the new MRI facility for their work.
+Of the `r nrow(dt)` responses, `r sum(dt$mri_current_use == "yes")` participants reported they currently use MRI for research. The majority of respondents, `r scales::percent(sum(dt$mri_future_use) / nrow(dt))`, indicated a future interest in using the new MRI facility for their work.
 
 ### Participant Demographics
 
@@ -246,7 +245,6 @@ ggplot(
   guides(fill = "none")
 ```
 
-
 ### Summary of Free-text Comments
 
 This section provides a summary of the open-ended comments, generated using the Gemini LMM.
@@ -265,7 +263,21 @@ text_summary <- summarize_text_response(dt$comments, summary_prompt)
 cat(text_summary)
 ```
 
-
 ## Conclusion
 
-The results from this survey will be used to create a compelling and data-driven application for the national grant scheme. The insights gathered will help us to clearly articulate the needs of the research community and build a strong case for investment in MRI infrastructure.
+```{r}
+#| label: all-summary
+#| results: asis
+
+# Prompt for the Gemini LMM
+summary_prompt <- "Please write a compelling conclusion to the results of this survey on the need for more research focused MRI scanners in Norway."
+
+# Summarize the 'comments' column
+text_summary <- summarize_text_response(
+  dput(dt) |> paste(collapse = " "),
+  summary_prompt
+)
+
+# Print the summary
+cat(text_summary)
+```
