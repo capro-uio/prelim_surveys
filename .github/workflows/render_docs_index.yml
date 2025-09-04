@@ -48,6 +48,5 @@ jobs:
         run: |
           git config user.name "GitHub Actions Bot"
           git config user.email "actions-bot@users.noreply.github.com"
-          git add MRI_Survey_Data_Analysis_Report.html
-          git commit -m "Automated report rendering: $(date -u +'%Y-%m-%d')" || true
+          git commit docs/index.html -m "Automated report rendering: $(date -u +'%Y-%m-%d')" || "Nothing to commit"
           git push
