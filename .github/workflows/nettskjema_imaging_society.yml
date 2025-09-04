@@ -53,5 +53,5 @@ jobs:
           git config user.name "GitHub Actions Bot"
           git config user.email "actions-bot@users.noreply.github.com"
           git pull
-          git commit docs/imagingsociety_2025.html -m "Automated report rendering: $(date -u +'%Y-%m-%d')" || "Nothing to commit"
+          git commit docs/imagingsociety_2025.html -m "Automated report rendering: $(date -u +'%Y-%m-%d')" || echo "Nothing to commit"
           git push
