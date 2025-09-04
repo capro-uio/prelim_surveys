@@ -6,20 +6,45 @@ format:
 editor: visual
 ---
 
+```{r}
+#| include: false
+#| label: setup
+
+extract_title <- function(html) {
+  header <- readLines(html, 40)
+  title_match <- regmatches(
+    header,
+    regexpr(
+      "<title[^>]*>(.*?)</title>",
+      header,
+      ignore.case = TRUE,
+      perl = TRUE
+    )
+  )
+  if (length(title_match) == 0) {
+    return(NA)
+  }
+  gsub("</?title[^>]*>", "", title_match, ignore.case = TRUE)
+}
+
+make_html_list <- function(text, url) {
+  sprintf("<li><a href='%s'>%s</a></li>", url, text)
+}
+```
+
 <ul>
 
 ```{r}
 #| echo: false
 #| results: asis
-list.files(here::here("docs"), "html", full.names = TRUE) |> 
-  sapply(function(x){
-    if(grepl("index", x)) return("")
-    title <- readLines(x, 30)
-    title <- title[grepl("^<title", title)]
-    title <- nettskjemar:::strip_html(title)
-    sprintf('<li><a href="%s">%s</a></li>',
-            basename(x), title)
-  }, USE.NAMES = FALSE) |> 
+files <- list.files(
+  here::here("docs"),
+  "html",
+  full.names = TRUE
+)
+titles <- sapply(files, extract_title, USE.NAMES = FALSE)
+
+make_html_list(titles, basename(files)) |>
   cat(sep = "\n")
 ```
 

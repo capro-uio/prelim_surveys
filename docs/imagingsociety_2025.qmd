@@ -28,15 +28,16 @@ params:
 #| include: false
 
 # Load necessary R packages
-library(tidyverse)
 library(patchwork)
 library(nettskjemar)
 library(gemini.R)
-library(knitr)
-library(kableExtra)
+library(dplyr)
+library(ggplot2)
+library(stringr)
+library(tidyr)
 
 # Set global options for the document
-opts_chunk$set(
+knitr::opts_chunk$set(
   echo = FALSE,
   message = FALSE,
   warning = FALSE,
