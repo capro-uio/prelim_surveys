@@ -49,6 +49,9 @@ knitr::opts_chunk$set(
 survey_id <- 540995
 cb <- ns_get_codebook(540995)
 dt <- ns_get_data(survey_id) |>
+  mutate(
+    across(everything(), ~ if_else(. == " ", NA, .))
+  ) |>
   ns_add_labels(cb)
 
 # Function to summarize text responses using Gemini LMM
@@ -56,7 +59,7 @@ summarize_text_response <- function(text_vector, prompt) {
   tryCatch(
     {
       # Combine non-empty text responses into a single string for the LMM
-      combined_text <- paste(text_vector[text_vector != ""], collapse = " ")
+      combined_text <- paste(text_vector, collapse = " ")
 
       if (nchar(combined_text) == 0) {
         return("No text responses to summarize.")
@@ -76,11 +79,36 @@ summarize_text_response <- function(text_vector, prompt) {
     }
   )
 }
+
+coalesce_labelled <- function(...) {
+  vars <- list(...)
+
+  # Convert to regular vectors for coalescing
+  unlabelled_vars <- lapply(vars, function(x) {
+    if (haven::is.labelled(x)) as.vector(x) else x
+  })
+
+  # Perform coalesce on unlabelled vectors
+  result <- do.call(coalesce, unlabelled_vars)
+
+  # Find first labelled variable to preserve its attributes
+  for (var in vars) {
+    if (haven::is.labelled(var)) {
+      attr(result, "labels") <- attr(var, "labels")
+      attr(result, "label") <- attr(var, "label")
+      class(result) <- class(var)
+      break
+    }
+  }
+
+  result
+}
 ```
 
 ## Background
 
-This report presents an analysis of the survey data collected for the national grant scheme application for MRI research infrastructure in Norway. The survey was designed to gather insights from the research community on the current use, needs, and challenges related to MRI for human research.
+This report presents an analysis of the survey data collected for the national grant scheme application for MRI research infrastructure in Norway. 
+The survey was designed to gather insights from the research community on the current use, needs, and challenges related to MRI for human research.
 
 The following sections will present a summary of the key findings, including graphical representations of the quantitative data and a textual summary of the open-ended responses, with the help of the Gemini LMM.
 
@@ -116,12 +144,17 @@ p1 <- ggplot(position_counts, aes(x = reorder(position, -n), y = n)) +
 # Combine institution columns
 dt_inst <- dt |>
   mutate(
-    institution = case_when(
-      institution_university != "" ~ institution_university,
-      institution_hospital != "" ~ institution_hospital,
-      TRUE ~ "other"
+    institution = coalesce_labelled(
+      institution_university,
+      institution_hospital,
+      institution_type
     )
   )
+
+institution_labels <- setNames(
+  names(attr(dt_inst$institution, "labels")),
+  attr(dt_inst$institution, "labels")
+)
 
 # Create a frequency table of institutions
 institution_counts <- dt_inst |>
@@ -152,7 +185,8 @@ p2 <- ggplot(
     y = "Number of Responses"
   ) +
   theme_minimal() +
-  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
+  scale_x_discrete(labels = institution_labels)
 
 p1 + p2
 ```
@@ -198,25 +232,24 @@ This section analyzes which conditions are considered most important for the fut
 #| fig-cap: "Future Conditions for MRI Research"
 #| fig-height: 7
 
-# Identify the columns for future conditions
-future_conditions_cols <- names(dt) |>
-  str_subset("mri_future_conditions\\.")
-
 # Use pivot_longer to get a count of each selected condition
 future_conditions_counts <- dt |>
-  select(all_of(future_conditions_cols)) |>
   pivot_longer(
-    cols = everything(),
+    cols = starts_with("mri_future_conditions."),
     names_to = "condition",
-    values_to = "selected"
+    values_to = "selected",
+    values_transform = list(
+      selected = as.integer
+    )
   ) |>
-  filter(selected == 1) |>
   group_by(condition) |>
-  summarise(n = sum(selected), .groups = "drop") |>
-  mutate(
-    condition = str_remove(condition, "mri_future_conditions\\."),
-    percentage = n / nrow(dt) * 100 # Calculate percentage of total respondents
+  summarise(
+    n = sum(selected),
+    total = n(),
+    percent = n / total * 100,
+    .groups = "drop"
   ) |>
+  separate(condition, into = c(NA, "condition"), sep = "\\.") |>
   arrange(desc(n))
 
 # Create a bar chart with a simple style similar to your example
@@ -226,11 +259,11 @@ ggplot(
 ) +
   geom_bar(
     stat = "identity",
-    aes(fill = percentage),
+    aes(fill = percent),
     alpha = .7
   ) +
   geom_label(
-    aes(label = scales::percent(n / nrow(dt))),
+    aes(label = scales::percent(percent / 100)),
     alpha = .5,
     nudge_y = .04
   ) +
@@ -239,9 +272,13 @@ ggplot(
     x = "Condition",
     y = "Number of Times Selected"
   ) +
-  scale_y_continuous(limits = c(0, max(future_conditions_counts$n) + 1)) +
+  scale_y_continuous(
+    limits = c(0, max(future_conditions_counts$n) + 1)
+  ) +
   theme_minimal() +
-  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
+  theme(
+    axis.text.x = element_text(angle = 45, hjust = 1)
+  ) +
   guides(fill = "none")
 ```
 
@@ -274,7 +311,14 @@ summary_prompt <- "Please write a compelling conclusion to the results of this s
 
 # Summarize the 'comments' column
 text_summary <- summarize_text_response(
-  dput(dt) |> paste(collapse = " "),
+  dt |>
+    select(
+      -contains("name"),
+      -contains("email"),
+      -contains("phone")
+    ) |>
+    dput() |>
+    paste(collapse = " "),
   summary_prompt
 )
 
