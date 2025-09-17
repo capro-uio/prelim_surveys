@@ -20,8 +20,6 @@ format:
     fig-cap-location: margin
 reference-location: margin
 citation-location: margin
-params:
-  run_nettskjema: true
 ---
 
 ```{r}
@@ -44,16 +42,6 @@ knitr::opts_chunk$set(
   warning = FALSE,
   fig.align = "center"
 )
-
-# Define survey ID
-survey_id <- 540995
-cb <- ns_get_codebook(540995)
-dt <- ns_get_data(survey_id) |>
-  mutate(
-    across(everything(), ~ if_else(. == " ", NA, .))
-  ) |>
-  ns_add_labels(cb)
-
 # Function to summarize text responses using Gemini LMM
 summarize_text_response <- function(text_vector, prompt) {
   tryCatch(
@@ -105,6 +93,23 @@ coalesce_labelled <- function(...) {
 }
 ```
 
+```{r}
+#| label: load-data
+#| include: false
+
+survey_id <- 540995
+cb <- ns_get_codebook(540995)
+dt <- ns_get_data(survey_id) |>
+  mutate(
+    across(everything(), ~ if_else(. == " ", NA, .))
+  ) |>
+  ns_add_labels(cb)
+
+cur <- dt$mri_current_use
+attributes(cur) <- NULL
+cur_mri <- sum(cur == "yes")
+```
+
 ## Background
 
 This report presents an analysis of the survey data collected for the national grant scheme application for MRI research infrastructure in Norway. 
@@ -114,15 +119,15 @@ The following sections will present a summary of the key findings, including gra
 
 ## Survey Results
 
-Of the `r nrow(dt)` responses, `r sum(dt$mri_current_use == "yes")` participants reported they currently use MRI for research. The majority of respondents, `r scales::percent(sum(dt$mri_future_use) / nrow(dt))`, indicated a future interest in using the new MRI facility for their work.
+Of the `r nrow(dt)` responses, `r cur_mri` participants reported they currently use MRI for research. 
+The majority of respondents, `r scales::percent(cur_mri / nrow(dt))`, indicated a future interest in using the new MRI facility for their work.
 
 ### Participant Demographics
 
 This section provides an overview of the survey participants' roles and institutions.
 
 ```{r}
-#| label: fig-demographics
-#| fig-cap: "Distribution of Participants by Position and Institution"
+#| label: fig-demographics-1
 
 # Create a frequency table of positions
 position_counts <- dt |>
@@ -140,6 +145,11 @@ p1 <- ggplot(position_counts, aes(x = reorder(position, -n), y = n)) +
   ) +
   theme_minimal() +
   theme(axis.text.x = element_text(angle = 45, hjust = 1))
+```
+
+```{r}
+#| label: fig-demographics
+#| fig-cap: "Distribution of Participants by Position and Institution"
 
 # Combine institution columns
 dt_inst <- dt |>
