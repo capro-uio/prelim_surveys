@@ -25,7 +25,9 @@ jobs:
             libfreetype6-dev \
             libjpeg-dev \
             libx11-dev \
-            pandoc
+            pandoc \
+            libharfbuzz-dev \
+            libfribidi-dev
 
       - name: Setup R
         uses: r-lib/actions/setup-r@v2
