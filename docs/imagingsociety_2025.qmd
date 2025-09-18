@@ -121,7 +121,7 @@ The following sections will present a summary of the key findings, including gra
 
 ## Survey Results
 
-Of the `r nrow(dt)` responses, `r cur_mri` participants reported they currently use MRI for research. The majority of respondents, `r scales::percent(cur_mri / nrow(dt))`, indicated a future interest in using the new MRI facility for their work.
+Of the `r nrow(dt)` responses, `r cur_mri` participants reported they currently use MRI for research, `r scales::percent(cur_mri / nrow(dt))` indicate a future interest in using the new MRI facility for their work.
 
 ### Participant Demographics
 
