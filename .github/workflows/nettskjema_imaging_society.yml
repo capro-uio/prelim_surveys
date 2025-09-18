@@ -18,7 +18,14 @@ jobs:
       - name: Install system dependencies for R packages
         run: |
           sudo apt-get update
-          sudo apt-get install -y libcurl4-openssl-dev libpng-dev
+          sudo apt-get install -y \
+            libcurl4-openssl-dev \
+            libpng-dev \
+            libfontconfig1-dev \
+            libfreetype6-dev \
+            libjpeg-dev \
+            libx11-dev \
+            pandoc
 
       - name: Setup R
         uses: r-lib/actions/setup-r@v2
